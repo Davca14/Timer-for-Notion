@@ -4,7 +4,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(to right, #151008, #4e4e4e);
+  background: linear-gradient(to right, #ededec, #dbdbdb);
   font-family: "Arial", sans-serif;
 }
 
@@ -48,7 +48,7 @@ body {
 }
 
 .button:hover:not(:disabled) {
-  background-color: #33096e;
+  background-color: #331164;
   transform: scale(1.05);
 }
 
@@ -63,7 +63,7 @@ body {
   width: 100%;
   max-width: 300px;
   height: 20px;
-  background-color: #e0e0e0;
+  background-color: #c5adf4;
   border-radius: 10px;
   margin-top: 20px;
   overflow: hidden;
