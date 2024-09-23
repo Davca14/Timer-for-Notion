@@ -1,4 +1,4 @@
-let time = 600; // Default time in seconds (10 minutes)
+let time = 0; // Default time in seconds (0 minutes)
 let timerInterval;
 const timerElement = document.getElementById('timer');
 const timeInput = document.getElementById('timeInput');
@@ -12,10 +12,10 @@ let initialTime = time;
 function updateTimerDisplay() {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
-    timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    timerElement.textContent = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 
     // Update progress bar
-    const progressPercentage = (time / initialTime) * 100;
+    const progressPercentage = initialTime > 0 ? (time / initialTime) * 100 : 0;
     progressBar.style.width = `${progressPercentage}%`;
 
     // Update timer color based on remaining time
@@ -30,7 +30,7 @@ function updateTimerDisplay() {
 
 function setTimer() {
     const minutes = parseInt(timeInput.value);
-    if (!isNaN(minutes) && minutes > 0) {
+    if (!isNaN(minutes) && minutes >= 0) {
         time = minutes * 60;
         initialTime = time; // Reset initial time
         updateTimerDisplay();
@@ -43,15 +43,18 @@ function setTimer() {
 function updateTimer() {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
-    timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-    time--;
+    timerElement.textContent = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 
-    if (time < 0) {
+    if (time <= 0) {
         clearInterval(timerInterval);
-        timerElement.textContent = "Time's up!";
+        timerElement.textContent = "00:00";
         alarmSound.play(); // Play alarm sound
+        startButton.disabled = false;
+        stopButton.disabled = true;
+        return;
     }
 
+    time--;
     updateTimerDisplay();
 }
 
