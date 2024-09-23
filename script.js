@@ -17,15 +17,6 @@ function updateTimerDisplay() {
     // Update progress bar
     const progressPercentage = initialTime > 0 ? (time / initialTime) * 100 : 0;
     progressBar.style.width = `${progressPercentage}%`;
-
-    // Update timer color based on remaining time
-    if (time <= initialTime * 0.2) {
-        timerElement.style.color = '#ff0000'; // Red color for last 20%
-    } else if (time <= initialTime * 0.5) {
-        timerElement.style.color = '#ffa500'; // Orange color for last 50%
-    } else {
-        timerElement.style.color = '#333'; // Default color
-    }
 }
 
 function setTimer() {
