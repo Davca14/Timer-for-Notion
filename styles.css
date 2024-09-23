@@ -3,10 +3,9 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 95vh;
-  background-color: #f5f5f5;
-  font-family: Arial, sans-serif;
-  border-radius: 15px;
+  height: 100vh;
+  background: linear-gradient(to right, #151008, #4e4e4e);
+  font-family: "Arial", sans-serif;
 }
 
 #timer {
@@ -14,9 +13,11 @@ body {
   color: #333;
   margin-bottom: 20px;
   padding: 10px 20px;
-  border: 2px solid #9e56d5;
+  border: 2px solid #6430cc;
   border-radius: 15px; /* Rounded edges */
   background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: color 0.5s; /* Smooth color transition */
 }
 
 .input-container,
@@ -32,11 +33,13 @@ body {
   font-size: 16px;
   border: none;
   border-radius: 15px; /* Rounded edges */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.2s; /* Smooth animations */
 }
 
 .button {
   color: #fff;
-  background-color: #5f047b;
+  background-color: #6430cc;
   cursor: pointer;
 }
 
@@ -44,9 +47,32 @@ body {
   background-color: #999;
 }
 
+.button:hover:not(:disabled) {
+  background-color: #33096e;
+  transform: scale(1.05);
+}
+
 .input {
   width: 100px;
   text-align: center;
-  border: 2px solid #c922bb;
+  border: 2px solid #6430cc;
   border-radius: 15px; /* Rounded edges */
+}
+
+.progress-container {
+  width: 100%;
+  max-width: 300px;
+  height: 20px;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 100%;
+  background-color: #6430cc;
+  border-radius: 10px 0 0 10px;
+  transition: width 1s;
 }
